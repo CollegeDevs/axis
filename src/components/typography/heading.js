@@ -4,15 +4,16 @@ import styled from '@emotion/styled'
 
 const applyStyles = (theme, htmlTag, props) => {
   const { fontSize, fontWeight, lineHeight } = theme
-  const { weight, density, size } = props
+  const { density, size, spacing, weight } = props
   const mappedSize = size ? fontSize[size] :  Object.values(fontSize)[htmlTag[1] - 1]
 
   return ({
     ...theme.typography.primaryHeadline,
 
+    lineHeight: density && lineHeight[density],
     fontSize: mappedSize,
     fontWeight: fontWeight[weight],
-    lineHeight: lineHeight[density]
+    letterSpacing: spacing
   })
 }
 
@@ -24,15 +25,21 @@ const Heading = ({ children, as, ...rest }) => {
 
 Heading.propTypes = {
   as: PropTypes.oneOf([ 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' ]),
-  // density: PropTypes.oneOf(Object.keys(lineHeight)),
-  // size: PropTypes.oneOf(Object.keys(fontSizes)),
-  // weight: PropTypes.oneOf(Object.keys(fontWeight))
+  density: PropTypes.string,
+  fontSize: PropTypes.string,
+  spacing: PropTypes.string,
+  size: PropTypes.string,
+  spacing: PropTypes.string,
+  weight: PropTypes.string,
 }
 
 Heading.defaultProps = {
   as: 'h1',
-  density: 'normal',
+  density: undefined,
+  letterSpacing: 'normal',
+  lineHeight: 'normal',
   size: undefined,
+  spacing: 'normal',
   weight: 'bold'
 }
 

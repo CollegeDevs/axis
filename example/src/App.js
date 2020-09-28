@@ -8,8 +8,12 @@ const App = () => (
       <Heading>Hello world!</Heading>
       <Text>Okay</Text>
       <Row>
-        <Column><Text>First column</Text></Column>
-        <Column><Text>First column</Text></Column>
+        <Column md={2} sm={2}>
+          <div style={{ background: 'red' }}><Text>First column</Text></div>
+        </Column>
+        <Column md={1} sm={2}>
+          <div style={{ background: 'green' }}><Text>Second column</Text></div>
+        </Column>
       </Row>
     </Container>
   </ThemeProvider>

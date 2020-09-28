@@ -3,36 +3,51 @@ import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
 
 const textAlign = {
-	left: 'left',
-	right: 'right',
-	center: 'center'
+  left: 'left',
+  right: 'right',
+  center: 'center'
 }
 
-const StyledText = styled.p(({ theme, align, size, type }) => {
-  const { fontSize } = theme
+const Text = props => {
+	const { children, align, density, spacing, size, type, weight, ...restProps } = props
 
-  return ({
-    ...theme.typography[type],
+	const StyledText = styled.p(({ theme }) => {
+		const { fontSize, lineHeight } = theme
 
-    fontSize: fontSize[size],
-    textAlign: align
-  })
-})
+		return {
+			...theme.typography[type],
 
-const Text = ({ children, ...rest }) => (
-	<StyledText {...rest}>{children}</StyledText>
-)
+			fontSize: fontSize[size],
+			fontWeight: theme.fontWeight[weight],
+			letterSpacing: spacing,
+			lineHeight: lineHeight[density],
+			textAlign: align
+		}
+	})
+
+	return (
+		<StyledText {...restProps}>
+			{children}
+		</StyledText>
+	)
+}
 
 Text.propTypes = {
 	align: PropTypes.oneOf(Object.keys(textAlign)),
-	size: PropTypes.string,
-	type: PropTypes.oneOf(['blog', 'primary', 'muted'])
+	density: PropTypes.oneOfType([ PropTypes.string, PropTypes.number ]),
+  size: PropTypes.string,
+  spacing: PropTypes.string,
+	type: PropTypes.string,
+	weight: PropTypes.string
 }
 
 Text.defaultProps = {
 	align: textAlign.left,
-	size: 'sm',
-	type: 'primary'
+	density: 'normal',
+  size: 'sm',
+  spacing: 'normal',
+	type: 'primary',
+	weight: 'normal'
 }
 
 export default Text

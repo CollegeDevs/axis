@@ -20,9 +20,9 @@ const fontWeight = {
 }
 
 const lineHeight = {
-  cozy: 1.2,
-  normal: 1.4,
-  comfort: 1.6
+  comfort: '1.6em',
+  cozy: '1.4em',
+  compact: '1em',
 }
 
 const fonts = {

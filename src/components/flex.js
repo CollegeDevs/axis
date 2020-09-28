@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
 
 const columnAlignment = {
-	default: 'initial',
+	initial: 'initial',
 	top: 'flex-start',
 	bottom: 'flex-end',
 	center: 'center',
@@ -11,7 +11,7 @@ const columnAlignment = {
 }
 
 const rowAlignment = {
-	default: 'initial',
+	initial: 'initial',
 	left: 'flex-start',
 	right: 'flex-end',
 	center: 'center'
