@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
 
 const applyStyles = (theme, htmlTag, props) => {
-  const { fontSize, fontWeight, lineHeight } = theme
+  const { fontSize, fontWeight, lineHeight, letterSpacing } = theme
   const { density, size, spacing, weight } = props
   const mappedSize = size ? fontSize[size] :  Object.values(fontSize)[htmlTag[1] - 1]
 
@@ -12,8 +12,8 @@ const applyStyles = (theme, htmlTag, props) => {
 
     lineHeight: density && lineHeight[density],
     fontSize: mappedSize,
-    fontWeight: fontWeight[weight],
-    letterSpacing: spacing
+    fontWeight: weight && fontWeight[weight],
+    letterSpacing: spacing && letterSpacing[spacing]
   })
 }
 
@@ -36,10 +36,10 @@ Heading.propTypes = {
 Heading.defaultProps = {
   as: 'h1',
   density: undefined,
-  letterSpacing: 'normal',
-  lineHeight: 'normal',
+  letterSpacing: undefined,
+  lineHeight: undefined,
   size: undefined,
-  spacing: 'normal',
+  spacing: undefined,
   weight: 'bold'
 }
 

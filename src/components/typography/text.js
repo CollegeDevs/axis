@@ -12,15 +12,15 @@ const Text = props => {
 	const { children, align, density, spacing, size, type, weight, ...restProps } = props
 
 	const StyledText = styled.p(({ theme }) => {
-		const { fontSize, lineHeight } = theme
+		const { fontSize, lineHeight, letterSpacing, fontWeight } = theme
 
 		return {
 			...theme.typography[type],
 
 			fontSize: fontSize[size],
-			fontWeight: theme.fontWeight[weight],
-			letterSpacing: spacing,
-			lineHeight: lineHeight[density],
+			fontWeight: weight && fontWeight[weight],
+			letterSpacing: spacing && letterSpacing[spacing],
+			lineHeight: density && lineHeight[density],
 			textAlign: align
 		}
 	})
@@ -43,11 +43,11 @@ Text.propTypes = {
 
 Text.defaultProps = {
 	align: textAlign.left,
-	density: 'normal',
+	density: undefined,
   size: 'sm',
-  spacing: 'normal',
+  spacing: undefined,
 	type: 'primary',
-	weight: 'normal'
+	weight: undefined
 }
 
 export default Text

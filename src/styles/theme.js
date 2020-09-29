@@ -25,6 +25,12 @@ const lineHeight = {
   compact: '1em',
 }
 
+const letterSpacing = {
+	comfort: '1.6em',
+  cozy: '1.4em',
+  compact: '1em',
+}
+
 const fonts = {
 	primaryFont: 'Avenir, sans-serif'
 }
@@ -83,9 +89,12 @@ const variables = {
 
 export default Object.freeze({
 	colors,
-	typography,
-  variables,
+	// Typography
   fontSize,
   fontWeight,
-  lineHeight
+	lineHeight,
+	letterSpacing,
+	typography,
+
+  variables,
 })
