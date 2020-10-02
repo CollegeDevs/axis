@@ -8,20 +8,30 @@ const textAlign = {
   center: 'center'
 }
 
+const getPreceddingStyle = (key, object, theme, styleKey) => {
+	if (key !== undefined)
+		return { [styleKey]: object[key] }
+	else if ({}.propertyIsEnumerable.call(theme, key))
+		return { [styleKey]: theme[key] }
+	else
+		return undefined
+}
+
 const Text = props => {
 	const { children, align, density, spacing, size, type, weight, ...restProps } = props
 
 	const StyledText = styled.p(({ theme }) => {
 		const { fontSize, lineHeight, letterSpacing, fontWeight } = theme
+		const typography = theme.typography[type]
 
 		return {
-			...theme.typography[type],
+			...typography,
 
-			fontSize: fontSize[size],
-			fontWeight: weight && fontWeight[weight],
-			letterSpacing: spacing && letterSpacing[spacing],
-			lineHeight: density && lineHeight[density],
-			textAlign: align
+			...getPreceddingStyle(size, fontSize, typography, 'fontSize'),
+			...getPreceddingStyle(weight, fontWeight, typography, 'fontWeight'),
+			...getPreceddingStyle(spacing, letterSpacing, typography, 'letterSpacing'),
+			...getPreceddingStyle(density, lineHeight, typography, 'lineHeight'),
+			...getPreceddingStyle(align, textAlign, typography, 'textAlign')
 		}
 	})
 
@@ -42,9 +52,9 @@ Text.propTypes = {
 }
 
 Text.defaultProps = {
-	align: textAlign.left,
+	align: undefined,
 	density: undefined,
-  size: 'sm',
+  size: undefined,
   spacing: undefined,
 	type: 'primary',
 	weight: undefined

@@ -2,19 +2,23 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
 
-const columnAlignment = {
+const crossAxis = {
 	initial: 'initial',
 	top: 'flex-start',
 	bottom: 'flex-end',
 	center: 'center',
+	start: 'start',
+	end: 'end',
 	stretch: 'stretch'
 }
 
-const rowAlignment = {
-	initial: 'initial',
-	left: 'flex-start',
-	right: 'flex-end',
-	center: 'center'
+const mainAxis = {
+	...crossAxis,
+
+	spaceBetween: 'space-between',
+	spaceAround: 'space-around',
+	spaceEvenly: 'space-evenly',
+	stretch: 'stretch'
 }
 
 const StyledFlex = styled.div(props => {
@@ -23,8 +27,8 @@ const StyledFlex = styled.div(props => {
 	return {
 		display: 'flex',
 		flexDirection: reversed && 'column',
-		alignItems: reversed ? rowAlignment[align] : columnAlignment[align],
-		justifyContent: reversed ? columnAlignment[justify] : rowAlignment[justify],
+		alignItems: reversed ? mainAxis[align] : crossAxis[align],
+		justifyContent: reversed ? crossAxis[justify] : mainAxis[justify],
 		width: '100%',
 		zIndex: zIndex && zIndex
 	}
@@ -35,15 +39,15 @@ const Flex = ({ children, ...rest }) => (
 )
 
 Flex.propTypes = {
-	align: PropTypes.oneOf(Object.keys(columnAlignment)),
-	justify: PropTypes.oneOf(Object.keys(rowAlignment)),
+	align: PropTypes.oneOf(Object.keys(crossAxis)),
+	justify: PropTypes.oneOf(Object.keys(mainAxis)),
 	reversed: PropTypes.bool,
 	zIndex: PropTypes.number
 }
 
 Flex.defaultProps = {
-	align: columnAlignment.default,
-	justify: rowAlignment.default,
+	align: crossAxis.default,
+	justify: mainAxis.default,
 	reversed: false,
 	zIndex: null
 }
