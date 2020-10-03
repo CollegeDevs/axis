@@ -18,9 +18,10 @@ const applyStyles = (theme, htmlTag, props) => {
 }
 
 const Heading = ({ children, as, ...rest }) => {
+  const { density, size, spacing, weight, ...restProps } = rest
   const StyledHeadline = styled[as](({ theme }) => applyStyles(theme, as, rest))
 
-  return <StyledHeadline>{children}</StyledHeadline>
+  return <StyledHeadline {...restProps}>{children}</StyledHeadline>
 }
 
 Heading.propTypes = {

@@ -11,8 +11,9 @@ const StyledGrid = styled.div`
 		`${2 * theme.variables.gutter}rem ${theme.variables.gutter}rem`};
 	margin: 0 ${({ theme }) => -1 * theme.variables.gutter}rem;
 	${breakpointMax('sm')} {
+		grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
 		margin: 0;
-	}
+	}s
 `
 
 const Row = ({ children, ...rest }) => <StyledGrid>{children}</StyledGrid>
