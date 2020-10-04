@@ -2,9 +2,15 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
 
+const textAlign = {
+  left: 'left',
+  right: 'right',
+  center: 'center'
+}
+
 const applyStyles = (theme, htmlTag, props) => {
   const { fontSize, fontWeight, lineHeight, letterSpacing } = theme
-  const { density, size, spacing, weight } = props
+  const { align, density, size, spacing, weight } = props
   const mappedSize = size ? fontSize[size] :  Object.values(fontSize)[htmlTag[1] - 1]
 
   return ({
@@ -13,7 +19,8 @@ const applyStyles = (theme, htmlTag, props) => {
     lineHeight: density && lineHeight[density],
     fontSize: mappedSize,
     fontWeight: weight && fontWeight[weight],
-    letterSpacing: spacing && letterSpacing[spacing]
+    letterSpacing: spacing && letterSpacing[spacing],
+    textAlign: align && textAlign[align]
   })
 }
 
@@ -26,6 +33,7 @@ const Heading = ({ children, as, ...rest }) => {
 
 Heading.propTypes = {
   as: PropTypes.oneOf([ 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' ]),
+  align: PropTypes.oneOf(Object.keys(textAlign)),
   density: PropTypes.string,
   fontSize: PropTypes.string,
   spacing: PropTypes.string,
@@ -36,6 +44,7 @@ Heading.propTypes = {
 
 Heading.defaultProps = {
   as: 'h1',
+  align: undefined,
   density: undefined,
   letterSpacing: undefined,
   lineHeight: undefined,
