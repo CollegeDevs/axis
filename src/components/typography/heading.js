@@ -2,6 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
 
+import { getPreceddingStyle } from '../../styles/mixins' // Map the props
+
 const textAlign = {
   left: 'left',
   right: 'right',

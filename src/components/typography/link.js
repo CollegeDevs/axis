@@ -2,14 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { ClassNames } from '@emotion/core'
 
-const getPreceddingStyle = (key, object, theme, styleKey) => {
-	if (key !== undefined)
-		return { [styleKey]: object[key] }
-	else if ({}.propertyIsEnumerable.call(theme, key))
-		return { [styleKey]: theme[key] }
-	else
-		return undefined
-}
+import { getPreceddingStyle } from '../../styles/mixins'
 
 const renderLink = ({ css, theme, ...rest }) => {
   const { children, external, size, to, type, ...restProps } = rest

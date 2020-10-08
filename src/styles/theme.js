@@ -55,6 +55,53 @@ const colors = {
 	}
 }
 
+const buttons = {
+	normal: {
+		primary: {
+			background: colors.primary,
+			borderColor: colors.primary,
+			color: colors.white
+		},
+		secondary: {
+			background: colors.primary,
+			borderColor: colors.primary,
+			color: colors.white
+		},
+		success: {
+			background: colors.success,
+			borderColor: colors.success,
+			color: palette.white
+		},
+		dark: {
+			background: palette.dark,
+			borderColor: palette.dark,
+			color: palette.white
+		}
+	},
+	hover: {
+		primary: {
+			background: palette.white,
+			borderColor: palette.white,
+			color: colors.primary
+		},
+		secondary: {
+			background: palette.white,
+			borderColor: palette.white,
+			color: colors.primary
+		},
+		success: {
+			background: palette.white,
+			borderColor: palette.white,
+			color: palette.success
+		},
+		dark: {
+			background: palette.white,
+			borderColor: palette.white,
+			color: palette.dark
+		}
+	}
+}
+
 const typography = {
 	primaryHeadline: {
 		fontFamily: fonts.primaryFont,
@@ -68,7 +115,7 @@ const typography = {
 		fontWeight: 300,
 		lineHeight: 1.2
 	},
-	secondary: {
+	button: {
 		fontFamily: fonts.primaryFont,
 		fontSize: '0.8rem',
 		fontWeight: 300,
@@ -79,15 +126,24 @@ const typography = {
 		fontSize: '1.2rem',
 		fontWeight: 300,
 		lineHeight: 1.4
+	},
+	muted: {
+    fontFamily: fonts.primaryFont,
+		fontSize: '0.7rem',
+		fontWeight: 300,
+		lineHeight: 1,
+		opacity: 0.9
   }
 }
 
 const variables = {
 	borderRadius: 0.25,
+	borderWidth: 1,
 	gutter: 1
 }
 
 export default Object.freeze({
+	buttons,
 	colors,
 	// Typography
   fontSize,

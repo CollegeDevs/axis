@@ -16,3 +16,6 @@ export { default as Spacer } from './components/spacer'
 export { default as Heading } from './components/typography/heading'
 export { default as Link } from './components/typography/link'
 export { default as Text } from './components/typography/text'
+
+// Button
+export { default as Button } from './components/button'

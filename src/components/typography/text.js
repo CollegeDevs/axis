@@ -2,19 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
 
+import { getPreceddingStyle } from '../../styles/mixins'
+
 const textAlign = {
   left: 'left',
   right: 'right',
   center: 'center'
-}
-
-const getPreceddingStyle = (key, object, theme, styleKey) => {
-	if (key !== undefined)
-		return { [styleKey]: object[key] }
-	else if ({}.propertyIsEnumerable.call(theme, key))
-		return { [styleKey]: theme[key] }
-	else
-		return undefined
 }
 
 const Text = props => {
