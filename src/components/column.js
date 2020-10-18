@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
 
-import { breakpoints, breakpointMax, breakpointMin } from '../styles/mixins'
+import { breakpoints, breakpointMin } from '../styles/mixins'
 
 const allowedBreakpoints = Object.keys(breakpoints).filter(
 	breakpoint => breakpoint !== 'xs'
@@ -24,11 +24,6 @@ const applyMediaQuery = props => {
 const StyledColumn = styled.div`
 	grid-column: auto / span ${props => props.xs};
 	${props => applyMediaQuery(props)};
-	margin: ${({ theme }) => 0 * theme.variables.gutter}rem;
-
-	${breakpointMax('sm')} {
-		margin: ${({ theme }) => 0 * theme.variables.gutter}rem;
-	}
 `
 
 const Column = ({ children, ...rest }) => (
