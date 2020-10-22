@@ -41,98 +41,42 @@ const colors = {
 	warning: palette.warning,
 	error: palette.error,
 	success: palette.success,
-
-	input: {
-		default: '#CACCCF',
-		placeholder: '#BDBDBD',
-		border: '#E8E8E8',
-		background: '#F9F9FA'
-	},
-
-	link: {
-		primary: palette.black,
-		docs: palette.primary
-	}
-}
-
-const buttons = {
-	normal: {
-		primary: {
-			background: colors.primary,
-			borderColor: colors.primary,
-			color: colors.white
-		},
-		secondary: {
-			background: colors.primary,
-			borderColor: colors.primary,
-			color: colors.white
-		},
-		success: {
-			background: colors.success,
-			borderColor: colors.success,
-			color: palette.white
-		},
-		dark: {
-			background: palette.dark,
-			borderColor: palette.dark,
-			color: palette.white
-		}
-	},
-	hover: {
-		primary: {
-			background: palette.white,
-			borderColor: palette.white,
-			color: colors.primary
-		},
-		secondary: {
-			background: palette.white,
-			borderColor: palette.white,
-			color: colors.primary
-		},
-		success: {
-			background: palette.white,
-			borderColor: palette.white,
-			color: palette.success
-		},
-		dark: {
-			background: palette.white,
-			borderColor: palette.white,
-			color: palette.dark
-		}
-	}
+	white: palette.white,
+	warning: palette.warning,
+	dark: palette.dark,
 }
 
 const typography = {
-	primaryHeadline: {
+	heading: {
 		fontFamily: fonts.primaryFont,
-		fontSize: '1.6rem',
-		fontWeight: 400,
+		fontSize: fontSize.lg,
+		fontWeight: fontWeight.normal,
 		lineHeight: 1.2
 	},
 	primary: {
 		fontFamily: fonts.primaryFont,
-		fontSize: '1rem',
-		fontWeight: 300,
+		fontSize: fontSize.xsm,
+		fontWeight: fontWeight.normal,
 		lineHeight: 1.2
 	},
 	button: {
 		fontFamily: fonts.primaryFont,
-		fontSize: '0.8rem',
-		fontWeight: 300,
+		fontSize: fontSize.xs,
+		fontWeight: fontWeight.normal,
 		lineHeight: 1.2
   },
   blog: {
     fontFamily: fonts.primaryFont,
-		fontSize: '1.2rem',
-		fontWeight: 300,
+		fontSize: fontSize.sm,
+		fontWeight: fontWeight.normal,
 		lineHeight: 1.4
 	},
 	muted: {
     fontFamily: fonts.primaryFont,
-		fontSize: '0.7rem',
-		fontWeight: 300,
+		fontSize: fontSize.xxs,
+		fontWeight: fontWeight.normal,
 		lineHeight: 1,
-		opacity: 0.9
+		opacity: 0.9 // You can add extra styles like this
   }
 }
 
@@ -141,9 +85,53 @@ const variables = {
 	borderWidth: 1,
 	gutter: 1
 }
+/*
+States defines the current state of the selected element.
+*/
+
+const states = {
+	button: {
+		primary: {
+			'&:hover': {
+				background: palette.white,
+				borderColor: palette.white,
+				color: colors.primary
+			}
+		},
+		warning: {
+			'&:hover': {
+				background: palette.white,
+				borderColor: palette.white,
+				color: colors.warning
+			}
+		},
+		success: {
+			'&:hover': {
+				background: palette.white,
+				borderColor: palette.white,
+				color: colors.success
+			}
+		},
+	},
+	link: {
+		// Provide default if you want to provide same for all states
+		default: {
+			'&:hover': {
+				textDecoration: `underline`
+			}
+		}
+	}
+}
+
+/*
+Transitions
+*/
+
+const transition = {
+	button: 'color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out'
+}
 
 export default Object.freeze({
-	buttons,
 	colors,
 	// Typography
   fontSize,
@@ -151,6 +139,7 @@ export default Object.freeze({
 	lineHeight,
 	letterSpacing,
 	typography,
-
+	states,
+	transition,
   variables,
 })
