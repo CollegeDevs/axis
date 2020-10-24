@@ -40,6 +40,7 @@ yarn add @theise3107/axis
 ```
 
 ## Usage
+Axis exposes components which can be used as drop in or can be extended as per your custom theme.
 
 ```jsx
 import React from 'react'
@@ -61,9 +62,7 @@ const Root = ({ children }) => (
 )
 ```
 
-## Usage
-
-Axis exposes components which can be used as drop in or can be extended as per your custom theme.
+## Components
 
 ### Layout Components
 
@@ -119,6 +118,26 @@ import { Row, Column, Text } from '@therise3107/axis'
 ...
 
 ```
+
+## Themeing
+
+Theming is the essensital to your application. Think of theme as a simple object changing of which will change the look and feel of your application, without you having to make changes in your code.
+
+Axis handles theming via a theme object, which must have following properties, however you can customize their sub properties. For proper example, you should refer to the [theme](https://github.com/CollegeDevs/axis/blob/master/src/styles/theme.js)
+
+### Handling multiple themes
+
+If your application needs to show different themes for different url or simply dark-mode, read-mode etc, you can do somthing like that:
+
+1. Exract the common properites in default theme
+2. [Deepmerge](https://github.com/TehShrike/deepmerge) the selected theme with default theme
+3. Pass it down to axis.
+
+## Contributing
+
+Please fork and clone the repository, run `yarn install && yarn start` in main folder. Cd to example folder run `yarn install && yarn start`, browse to localhost:3000 and you can test your changes in real time.
+
+Please feel free to provide suggestions, and how we can improve the readme and code.
 
 ## License
 

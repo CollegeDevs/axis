@@ -1,5 +1,18 @@
 import palette from './palette'
 
+/*
+Typography: responsible for the style of all the text. Properties likes fontFamily, fontSize, fontWeight,
+lineHeight, letterSpacing and other properties as per your requirements.
+
+Font size is responsible for text size. You can customize the keys with your custom size, the keys
+are used as size prop to typography components. Please note the usage of `rem` this helps with responsive
+typography, refer css property https://developer.mozilla.org/en-US/docs/Web/CSS/font-size
+
+Font weight is responsible for font-size, refer css property https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight
+Line height is responsible for line-height, refer css property https://developer.mozilla.org/en-US/docs/Web/CSS/line-height
+Letter spacing is responsible for density of letters, refer css property https://developer.mozilla.org/en-US/docs/Web/CSS/letter-spacing
+*/
+
 const fontSize = {
 	xxl: '2.5rem',
 	xl: '2rem',
@@ -33,17 +46,6 @@ const letterSpacing = {
 
 const fonts = {
 	primaryFont: 'Avenir, sans-serif'
-}
-
-const colors = {
-	background: palette.dark,
-	primary: palette.primary,
-	warning: palette.warning,
-	error: palette.error,
-	success: palette.success,
-	white: palette.white,
-	warning: palette.warning,
-	dark: palette.dark,
 }
 
 const typography = {
@@ -80,11 +82,31 @@ const typography = {
   }
 }
 
+/*
+Colors defines the coloring of your application.
+*/
+
+const colors = {
+	background: palette.dark,
+	primary: palette.primary,
+	warning: palette.warning,
+	error: palette.error,
+	success: palette.success,
+	white: palette.white,
+	warning: palette.warning,
+	dark: palette.dark,
+}
+
+/*
+Variables is responsible for numbers like radius of button, padding in button etc...
+*/
+
 const variables = {
 	borderRadius: 0.25,
 	borderWidth: 1,
 	gutter: 1
 }
+
 /*
 States defines the current state of the selected element.
 */
@@ -131,14 +153,19 @@ const transition = {
 	button: 'color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out'
 }
 
+/*
+Please make sure to export all the below properties from your custom theme as well.
+*/
+
 export default Object.freeze({
 	colors,
-	// Typography
+
   fontSize,
   fontWeight,
 	lineHeight,
 	letterSpacing,
 	typography,
+
 	states,
 	transition,
   variables,
