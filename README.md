@@ -15,7 +15,9 @@ Axis is a theme-based component library that supports SSR by default. Axis is fu
 
 ## Motivation
 
-The recent trend of driving your styling from JavaScript has been the motivation behind true component-level design. However, I have always felt there is room for more abstraction and decoupling of the styling from the application code. The usage of headless CMS to drive the content motivated me to write a library that can be flexible enough to serve your styling from your CMS or server and still be very modular, flexible, and extensible. Axis is an attempt to decouple the mixing of javascript and CSS to furtherance with the composite theme that is responsible for styling your UI.
+The recent trend of driving your styling from JavaScript has been the motivation behind true component-level design. However, I have always felt there is room for more abstraction and decoupling of the styling from the application code. The usage of headless CMS to drive the content motivated me to write a library that can be flexible enough to serve your styling from your CMS or server and still be very modular, flexible, and extensible. Axis is an attempt to decouple the mixing of javascript and CSS to furtherance with the composite theme that is responsible for styling your UI. Here is the simple architecture of axis
+
+![Axis Architecture](axis-architecture.png)
 
 
 ## Why Axis
