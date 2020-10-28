@@ -10,14 +10,14 @@
 
 Axis is a theme-based component library that supports SSR by default. Axis is fully responsive and extensible. The main philosophy of Axis is driving the styling of your application via themes, which can be either shipped within your code or CMS or your server. Here is the detailed flow of Design Systems Architecture
 
-![Design System Architecture](design-systems.png)
+![Design System Architecture](https://lucid.app/publicSegments/view/3bcd07a4-2140-476b-b5a6-838b890daf77/image.png)
 
 
 ## Motivation
 
 The recent trend of driving your styling from JavaScript has been the motivation behind true component-level design. However, I have always felt there is room for more abstraction and decoupling of the styling from the application code. The usage of headless CMS to drive the content motivated me to write a library that can be flexible enough to serve your styling from your CMS or server and still be very modular, flexible, and extensible. Axis is an attempt to decouple the mixing of javascript and CSS to furtherance with the composite theme that is responsible for styling your UI. Here is the simple architecture of axis
 
-![Axis Architecture](axis-architecture.png)
+![Axis Architecture](https://lucid.app/publicSegments/view/1f92e0f7-2101-46b9-a73e-e726101223a7/image.png)
 
 
 ## Why Axis
@@ -29,7 +29,6 @@ Another important feature is Axis is enabling non-developer to change the theme 
 ## Theming in Axis
 
 Theming is a simple javascript file that exports styling objects which are used by specific components to manipulate styling based on the theme object. Consider theme as a collection of objects which can be changed based on the props. Please refer to the default [theme](https://github.com/CollegeDevs/axis/blob/master/src/styles/theme.js) file for more information.
-
 
 ## Install
 
