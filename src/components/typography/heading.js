@@ -10,25 +10,25 @@ const textAlign = {
   center: 'center'
 }
 
-const applyStyles = (theme, htmlTag, props) => {
+const applyStyles = (theme, props) => {
   const { fontSize, fontWeight, lineHeight, letterSpacing } = theme
-  const { align, density, size, spacing, weight } = props
-  const mappedSize = size ? fontSize[size] :  Object.values(fontSize)[htmlTag[1] - 1]
+  const { align, density, size, spacing, type, weight } = props
+  const typography = theme.typography[type]
 
   return ({
-    ...theme.typography.primaryHeadline,
+    ...typography,
 
-    lineHeight: density && lineHeight[density],
-    fontSize: mappedSize,
-    fontWeight: weight && fontWeight[weight],
-    letterSpacing: spacing && letterSpacing[spacing],
-    textAlign: align && textAlign[align]
+    ...getPreceddingStyle(size, fontSize, typography, 'fontSize'),
+    ...getPreceddingStyle(weight, fontWeight, typography, 'fontWeight'),
+    ...getPreceddingStyle(spacing, letterSpacing, typography, 'letterSpacing'),
+    ...getPreceddingStyle(density, lineHeight, typography, 'lineHeight'),
+    ...getPreceddingStyle(align, textAlign, typography, 'textAlign')
   })
 }
 
 const Heading = ({ children, as, ...rest }) => {
   const { density, size, spacing, weight, ...restProps } = rest
-  const StyledHeadline = styled[as](({ theme }) => applyStyles(theme, as, rest))
+  const StyledHeadline = styled[as](({ theme }) => applyStyles(theme, rest))
 
   return <StyledHeadline {...restProps}>{children}</StyledHeadline>
 }
@@ -41,6 +41,7 @@ Heading.propTypes = {
   spacing: PropTypes.string,
   size: PropTypes.string,
   spacing: PropTypes.string,
+  type: PropTypes.string,
   weight: PropTypes.string,
 }
 
@@ -52,6 +53,7 @@ Heading.defaultProps = {
   lineHeight: undefined,
   size: undefined,
   spacing: undefined,
+  type: 'heading',
   weight: 'bold'
 }
 
