@@ -1,6 +1,6 @@
 {
   "name": "@therise3107/axis",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "React Styled Component Library",
   "author": "therise3107",
   "license": "MIT",
@@ -12,7 +12,10 @@
     "node": ">=10"
   },
   "keywords": [
-    "React", "Styled Component Library", "Responsive", "JavaScript"
+    "React",
+    "Styled Component Library",
+    "Responsive",
+    "JavaScript"
   ],
   "scripts": {
     "build": "microbundle-crl --no-compress --format modern,cjs",
