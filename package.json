@@ -11,6 +11,9 @@
   "engines": {
     "node": ">=10"
   },
+  "keywords": [
+    "React", "Styled Component Library", "Responsive", "JavaScript"
+  ],
   "scripts": {
     "build": "microbundle-crl --no-compress --format modern,cjs",
     "start": "microbundle-crl watch --no-compress --format modern,cjs",
