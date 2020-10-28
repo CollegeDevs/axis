@@ -14,7 +14,7 @@ const Text = props => {
 	const { children, align, density, spacing, size, type, weight, ...restProps } = props
 
 	const StyledText = styled.p(({ theme }) => {
-		const { fontSize, lineHeight, letterSpacing, fontWeight } = theme
+		const { fontSize, fontWeight, letterSpacing, lineHeight } = theme
 		const typography = theme.typography[type]
 
 		return {

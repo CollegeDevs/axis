@@ -14,6 +14,6 @@ const StyledGrid = styled.div`
 	}
 `
 
-const Row = ({ children, ...rest }) => <StyledGrid>{children}</StyledGrid>
+const Row = ({ children, ...rest }) => <StyledGrid {...rest}>{children}</StyledGrid>
 
 export default Row

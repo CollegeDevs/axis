@@ -2,21 +2,21 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { ClassNames } from '@emotion/core'
 
-import { getPreceddingStyle } from '../../styles/mixins'
+import { getDefaultState, getPreceddingStyle } from '../../styles/mixins'
 
 const renderLink = ({ css, theme, ...rest }) => {
-  const { children, external, size, to, type, ...restProps } = rest
-  const { colors, fontSize } = theme
+  const { children, color, external, size, to, type, weight, ...restProps } = rest
+  const { colors, fontSize, fontWeight, states } = theme
   const typography = theme.typography.primary
+
 
   const className = css({
     ...typography,
 
+    ...getPreceddingStyle(color, colors, colors, 'color'),
     ...getPreceddingStyle(size, fontSize, typography, 'fontSize'),
-    ...getPreceddingStyle(type, colors.link, colors.link, 'color'),
-    ':hover': {
-      textDecoration: `underline`
-    }
+    ...getPreceddingStyle(weight, fontWeight, typography, 'fontWeight'),
+    ...getDefaultState(states.link, type)
   })
 
   if (typeof children === 'function') return children({ className, css, theme })
@@ -40,17 +40,21 @@ const Link = ({ ...rest }) => (
 )
 
 Link.propTypes = {
+  color: PropTypes.string,
   external: PropTypes.bool,
   to: PropTypes.string,
   size: PropTypes.string,
-  type: PropTypes.string
+  type: PropTypes.string,
+  weight: PropTypes.string
 }
 
 Link.defaultProps = {
+  color: undefined,
   external: false,
   to: undefined,
   size: undefined,
-  type: 'primary'
+  type: 'primary',
+  weight: undefined
 }
 
 export default Link

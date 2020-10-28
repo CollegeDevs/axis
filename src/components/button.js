@@ -2,43 +2,32 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
 
-import { getPreceddingStyle } from '../styles/mixins'
-
-const getActiveStates = (states, kind) => {
-  const { normal, active, focus, hover } = states
-  const activeState = typeof active !== 'undefined' ? { '&:active': active[kind] } : {}
-  const focusState = typeof focus !== 'undefined' ? { '&:focus': focus[kind] } : {}
-  const hoverState = typeof hover !== 'undefined' ? { '&:hover': hover[kind] } : {}
-
-  return ({
-    ...normal[kind],
-    ...activeState,
-    ...focusState,
-    ...hoverState
-  })
-}
+import { getDefaultStyle, getPreceddingStyle } from '../styles/mixins'
 
 const Button = ({ children, ...rest }) => {
   const { kind, size, width, ...restProps } = rest
 
   const StyledButton = styled.button(({ theme }) => {
-    const { buttons, fontSize, variables } = theme
+    const { states, colors, fontSize, transition, variables } = theme
     const typography = theme.typography.button
 
     return ({
       ...typography,
 
-      cursor: 'pointer',
-      display: 'inline-block',
-      textAlign: 'center',
+      background: colors[kind],
+      borderColor: colors[kind],
       borderRadius: `${variables.borderRadius}rem`,
       borderWidth: `${variables.borderWidth}px`,
+      color: colors.white,
+      cursor: 'pointer',
+      display: 'inline-block',
       padding: `${0.5 * theme.variables.gutter}rem  ${0.75 * theme.variables.gutter}rem`,
-      width: width && width,
+      textAlign: 'center',
       verticalAlign: 'middle',
-      transition: 'color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out',
+      width: width && width,
+      transition: getDefaultStyle(transition.button, kind),
       ...getPreceddingStyle(size, fontSize, typography, 'fontSize'),
-      ...getActiveStates(buttons, kind)
+      ...states.button[kind]
     })
   })
 
@@ -48,7 +37,7 @@ const Button = ({ children, ...rest }) => {
 }
 
 Button.propTypes = {
-  kind: PropTypes.oneOf(['primary', 'error', 'warning', 'success']),
+  kind: PropTypes.string,
   size: PropTypes.string,
   width: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
 }
